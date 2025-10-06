@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwut5jm47cb3b"]
 
-[ext_resource type="Script" uid="uid://b1a62ma4bohup" path="res://Marble.gd" id="1_7ritg"]
+[ext_resource type="Script" uid="uid://b1a62ma4bohup" path="res://scripts/Marble.gd" id="1_il0lc"]
 
 [node name="Marble" type="Control"]
 custom_minimum_size = Vector2(100, 100)
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7ritg")
+script = ExtResource("1_il0lc")
 
 [node name="MarbleBackground" type="TextureRect" parent="."]
 layout_mode = 1

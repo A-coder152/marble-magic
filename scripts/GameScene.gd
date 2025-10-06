@@ -1,11 +1,11 @@
 # GameScene.gd
 extends Control
 
-@onready var player_health_bar = $UI_Layer/MainUIContainer/HealthBarContainer/PlayerHealthBar
-@onready var enemy_health_bar = $UI_Layer/MainUIContainer/HealthBarContainer/EnemyHealthBar
-@onready var message_label = $UI_Layer/MainUIContainer/MessageLabel
-@onready var marble_container = $UI_Layer/MainUIContainer/MarbleContainer
-@onready var confirm_button = $UI_Layer/MainUIContainer/ConfirmButton
+@onready var player_health_bar = $HealthBarContainer/PlayerHealthBar
+@onready var enemy_health_bar = $HealthBarContainer/EnemyHealthBar
+@onready var message_label = $MessageLabel
+@onready var marble_container = $MarbleContainer
+@onready var confirm_button = $ConfirmButton
 
 var marble_instances: Array = [] # To hold references to our instantiated marble nodes
 
@@ -21,7 +21,7 @@ func _ready():
 
 func _setup_marbles():
 	# Load the Marble scene
-	var marble_scene = preload("res://marble.tscn") # Adjust path if different
+	var marble_scene = preload("res://scenes/marble.tscn") # Adjust path if different
 
 	# Instantiate 4 marbles and add them to the container
 	for i in range(4):
