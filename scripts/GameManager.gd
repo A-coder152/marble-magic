@@ -116,9 +116,8 @@ func confirm_selection():
 		_apply_damage_to_enemy(total_chosen_damage)
 		_set_turn_phase(TurnPhase.TURN_END)
 		# After a short delay, proceed to next turn or game over check
-		get_tree().create_timer(1.5).timeout.connect(func():
-			_end_turn()
-		)
+		await get_tree().create_timer(1.75 if enemy_health > 0 else 2.25).timeout
+		_end_turn()
 
 # Applies damage to the enemy
 func _apply_damage_to_enemy(amount: int):

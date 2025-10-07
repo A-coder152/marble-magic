@@ -1,8 +1,8 @@
 # GameScene.gd
 extends Control
 
-@onready var player_health_bar = $HealthBarContainer/PlayerHealthBar
-@onready var enemy_health_bar = $HealthBarContainer/EnemyHealthBar
+@onready var player_health_bar = $PlayerHealthBar
+@onready var enemy_health_bar = $EnemyHealthBar
 @onready var message_label = $MessageLabel
 @onready var marble_container = $MarbleContainer
 @onready var confirm_button = $ConfirmButton
@@ -98,10 +98,10 @@ func _update_ui_for_phase(phase: int):
 			_update_marble_values_and_visibility(false) # Still hidden
 			_reset_marble_selection_visuals() # Clear selection visuals
 		GameManager.TurnPhase.TURN_END:
-			message_label.text = "Turn ended. Enemy attacking..."
 			confirm_button.disabled = true
 			_update_marble_values_and_visibility(true) # Reveal all marbles at turn end
 			_reset_marble_selection_visuals() # Clear selection visuals
+			message_label.text = "Turn ended. Enemy attacking..." if enemy_health_bar.value > 0 else "Enemy defeated! Starting next round..."
 		GameManager.TurnPhase.GAME_OVER:
 			# Handled by _on_game_over signal
 			pass
