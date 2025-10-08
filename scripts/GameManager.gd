@@ -140,12 +140,12 @@ func _end_turn():
 		_set_turn_phase(TurnPhase.GAME_OVER)
 		game_over.emit(false) # Player lost
 		print("Game Over! You lost.")
-		start_new_game()
+		#start_new_game()
 	elif enemy_health <= 0:
 		_set_turn_phase(TurnPhase.GAME_OVER)
 		game_over.emit(true) # Player won
 		print("Game Over! You won!")
-		start_new_game()
+		#start_new_game()
 	else:
 		# If game not over, start next turn
 		_enemy_turn() # Enemy attacks before new turn starts
@@ -154,7 +154,7 @@ func _end_turn():
 			_set_turn_phase(TurnPhase.GAME_OVER)
 			game_over.emit(false) # Player lost
 			print("Game Over! You lost after enemy attack.")
-			start_new_game()
+			#start_new_game()
 		else:
 			print("Starting new turn...")
 			start_next_turn() # Resets marbles and phase

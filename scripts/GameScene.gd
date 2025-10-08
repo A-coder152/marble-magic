@@ -70,10 +70,13 @@ func _on_damage_dealt(amount: int, target: String):
 
 func _on_game_over(win: bool):
 	confirm_button.disabled = true
+	$BGAlpha.visible = true
 	if win:
 		message_label.text = "GAME OVER! YOU WIN!"
+		$RoundWonPopup.visible = true
 	else:
 		message_label.text = "GAME OVER! YOU LOST!"
+		$RoundLostPopup.visible = true
 	# You might want to show a "Play Again" button here
 
 # --- UI Update Logic based on Turn Phase ---
@@ -119,3 +122,21 @@ func _update_marble_values_and_visibility(reveal_all: bool):
 func _reset_marble_selection_visuals():
 	for marble in marble_instances:
 		marble.set_selected(false)
+
+
+func _on_round_won_pressed() -> void:
+	GameManager.start_new_game()
+	$BGAlpha.visible = false
+	$RoundWonPopup.visible = false
+
+
+func _on_round_lost_game_pressed() -> void:
+	GameManager.start_new_game()
+	$BGAlpha.visible = false
+	$RoundLostPopup.visible = false
+
+
+func _on_reset_game_pressed() -> void:
+	GameManager.enemy_max_health = 5
+	GameManager.enemy_max_dmg = 2
+	_on_round_lost_game_pressed()
