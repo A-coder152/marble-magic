@@ -42,7 +42,7 @@ func reveal_value(reveal: bool):
 	if reveal:
 		value_label.text = str(marble_value)
 		# Optional: change marble color when revealed
-		marble_button.add_theme_stylebox_override("normal", _get_revealed_style())
+		#marble_button.add_theme_stylebox_override("normal", _get_revealed_style())
 	else:
 		value_label.text = "?"
 		marble_button.add_theme_stylebox_override("normal", _get_normal_style())
@@ -55,7 +55,7 @@ func _on_MarbleButton_pressed():
 # --- Helper functions for dynamic styles (you can customize these) ---
 func _get_normal_style():
 	var style = StyleBoxFlat.new()
-	style.set_bg_color(Color("d3d3d3")) # Light gray
+	style.set_bg_color(Color("c3c3c3")) # Light gray
 	style.set_corner_radius_all(50)
 	style.set_border_width_all(2)
 	style.set_border_color(Color("a0a0a0"))
@@ -93,12 +93,12 @@ func _get_selected_style():
 	style.set_shadow_offset(Vector2(3,3))
 	return style
 
-func _get_revealed_style():
-	var style = StyleBoxFlat.new()
-	style.set_bg_color(Color("8a2be2")) # Blue Violet for revealed
-	style.set_corner_radius_all(50)
-	style.set_border_width_all(2)
-	style.set_border_color(Color("4b0082")) # Indigo
-	style.set_shadow_size(3)
-	style.set_shadow_offset(Vector2(2,2))
-	return style
+#func _get_revealed_style():
+	#var style = StyleBoxFlat.new()
+	#style.set_bg_color(Color("8a2be2")) # Blue Violet for revealed
+	#style.set_corner_radius_all(50)
+	#style.set_border_width_all(2)
+	#style.set_border_color(Color("4b0082")) # Indigo
+	#style.set_shadow_size(3)
+	#style.set_shadow_offset(Vector2(2,2))
+	#return style
