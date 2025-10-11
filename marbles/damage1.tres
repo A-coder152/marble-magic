@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=2 format=3 uid="uid://d23vkr4npjgte"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_7winw"]
+
+[resource]
+script = ExtResource("1_7winw")
+title = "Paper Marble"
+description = "Too smooth to cause a paper cut"
+temp_bag_title = "1"
+damage = 1
+heal = 0
+effects = 0
+damage2 = 0
+heal2 = 0
+metadata/_custom_type_script = "uid://dohx58gu44s2"

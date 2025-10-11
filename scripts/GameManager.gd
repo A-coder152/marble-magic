@@ -6,6 +6,15 @@ var player_max_health: int = 25
 var enemy_max_health: int = 5
 var enemy_max_dmg: int = 2
 
+var all_marbles = [
+	preload("uid://eonk3e3ilnxt"),
+	preload("uid://d23vkr4npjgte"),
+	preload("uid://boklkf4kph6xe"),
+	preload("uid://vcb5ix65au4y"),
+	preload("uid://sgv8yovrj18k"),
+	preload("uid://boxqq5clug2q1")
+]
+
 var current_marbles: Array = []
 
 var selected_marble_indices: Array = []
@@ -20,7 +29,7 @@ enum TurnPhase {
 var current_turn_phase: int = TurnPhase.TAKE_1_SELECTION
 
 var potential_damage: int = 0
-var marble_values: Array = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]
+var bag_marbles: Array = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]
 
 signal marble_selected(index: int)
 signal selection_confirmed()
@@ -52,12 +61,11 @@ func start_new_game():
 func _generate_new_marbles():
 	current_marbles.clear()
 	for i in range(4):
-		current_marbles.append(marble_values[randi_range(0, len(marble_values) - 1)]) # Random value between 5 and 20
+		current_marbles.append(all_marbles[bag_marbles[randi_range(0, len(bag_marbles) - 1)]]) # Random value between 5 and 20
 	print("New marbles generated: ", current_marbles)
 
 func handle_marble_selection(index: int):
-	if current_turn_phase == TurnPhase.TAKE_1_SELECTION or \
-	   current_turn_phase == TurnPhase.TAKE_2_SELECTION:
+	if current_turn_phase == TurnPhase.TAKE_1_SELECTION or current_turn_phase == TurnPhase.TAKE_2_SELECTION:
 		if selected_marble_indices.has(index):
 			selected_marble_indices.erase(index)
 		else:
@@ -73,11 +81,11 @@ func confirm_selection():
 	if selected_marble_indices.size() != 2:
 		return
 
-	var chosen_values = []
+	var chosen_values: Array[Marble] = []
 	for index in selected_marble_indices:
 		chosen_values.append(current_marbles[index])
 
-	var total_chosen_damage = chosen_values[0] + chosen_values[1]
+	var total_chosen_damage = chosen_values[0].damage + chosen_values[1].damage
 
 	if current_turn_phase == TurnPhase.TAKE_1_SELECTION:
 		potential_damage = total_chosen_damage

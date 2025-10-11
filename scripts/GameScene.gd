@@ -21,7 +21,7 @@ func _setup_marbles():
 		var marble_instance = marble_scene.instantiate()
 		marble_container.add_child(marble_instance)
 		marble_instances.append(marble_instance)
-		marble_instance.set_marble_data(i, 0)
+		marble_instance.set_marble_data(i)
 		marble_instance.marble_clicked.connect(GameManager.handle_marble_selection)
 
 func _connect_signals():

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=2 format=3 uid="uid://sgv8yovrj18k"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_exb84"]
+
+[resource]
+script = ExtResource("1_exb84")
+title = "Glass Marble"
+description = "The OG. Definitely painful"
+temp_bag_title = "4"
+damage = 4
+heal = 0
+effects = 0
+damage2 = 0
+heal2 = 0
+metadata/_custom_type_script = "uid://dohx58gu44s2"
