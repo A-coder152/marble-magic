@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_exb84")
 title = "Glass Marble"
+cost = 2
 description = "The OG. Definitely painful"
 temp_bag_title = "4"
 damage = 4

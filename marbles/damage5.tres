@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_cscce")
 title = "Metal Marble"
+cost = 3
 description = "Leaves a sore spot and a sorer memory."
 temp_bag_title = "5"
 damage = 5

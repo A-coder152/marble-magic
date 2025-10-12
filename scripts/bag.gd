@@ -7,6 +7,9 @@ var marble_bag_scene = preload("res://scenes/bag_item.tscn")
 var marbles_listed = []
 
 func _ready() -> void:
+	marbles_listed = []
+	for child in marbles_container.get_children():
+		child.queue_free()
 	for marble_idx in GameManager.bag_marbles:
 		var marble = GameManager.all_marbles[marble_idx]
 		if marble not in marbles_listed:
@@ -17,7 +20,6 @@ func _ready() -> void:
 			new_marble.setup_marble()
 			marbles_listed.append(marble)
 			marbles_container.add_child(new_marble)
-	print(marbles_container.get_children())
 
 
 func _on_close_button_pressed() -> void:

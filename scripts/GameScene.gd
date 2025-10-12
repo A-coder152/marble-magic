@@ -6,6 +6,9 @@ extends Control
 @onready var message_label = $MessageLabel
 @onready var marble_container = $MarbleContainer
 @onready var confirm_button = $ConfirmButton
+@onready var bgalpha = $BGAlpha
+@onready var Shop = $Shop
+@onready var Bag = $Bag
 
 var marble_instances: Array = [] 
 
@@ -32,6 +35,7 @@ func _connect_signals():
 	GameManager.game_over.connect(_on_game_over)
 	confirm_button.pressed.connect(GameManager.confirm_selection)
 	GameManager.close_bag.connect(close_bag)
+	GameManager.close_shop.connect(close_shop)
 
 
 func _on_health_changed(entity_type: String, current_hp: int, max_hp: int):
@@ -58,6 +62,7 @@ func _on_game_over(win: bool):
 	confirm_button.disabled = true
 	$BGAlpha.visible = true
 	if win:
+		GameManager.coins += 5
 		message_label.text = "GAME OVER! YOU WIN!"
 		$RoundWonPopup.visible = true
 	else:
@@ -106,23 +111,32 @@ func _reset_marble_selection_visuals():
 
 func _on_round_won_pressed() -> void:
 	GameManager.start_new_game()
-	$BGAlpha.visible = false
+	bgalpha.visible = false
 	$RoundWonPopup.visible = false
 
 func _on_round_lost_game_pressed() -> void:
 	GameManager.start_new_game()
-	$BGAlpha.visible = false
+	bgalpha.visible = false
 	$RoundLostPopup.visible = false
 
 func _on_reset_game_pressed() -> void:
 	GameManager.enemy_max_health = 5
 	GameManager.enemy_max_dmg = 2
+	GameManager.coins = 0
 	_on_round_lost_game_pressed()
 
 func _on_bag_btn_pressed() -> void:
-	$Bag.visible = true
-	$BGAlpha.visible = true
+	Bag.visible = true
+	Bag._ready()
+	bgalpha.visible = true
 
 func close_bag():
-	$Bag.visible = false
-	$BGAlpha.visible = false
+	Bag.visible = false
+	bgalpha.visible = false
+
+func _on_shop_pressed() -> void:
+	Shop.visible = true
+	Shop.run_shop()
+
+func close_shop():
+	Shop.visible = false

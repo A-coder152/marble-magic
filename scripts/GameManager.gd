@@ -1,5 +1,7 @@
 extends Node
 
+var coins = 0
+
 var player_health: int = 20
 var enemy_health: int = 20
 var player_max_health: int = 25
@@ -38,6 +40,8 @@ signal health_changed(entity_type: String, current_hp: int, max_hp: int)
 signal damage_dealt(amount: int, target: String)
 signal game_over(win: bool)
 signal close_bag()
+signal close_shop()
+signal refresh_shop()
 
 func _ready():
 	print("GameManager ready and loaded!")

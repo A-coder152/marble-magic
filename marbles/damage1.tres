@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_7winw")
 title = "Paper Marble"
+cost = -1
 description = "Too smooth to cause a paper cut"
 temp_bag_title = "1"
 damage = 1
