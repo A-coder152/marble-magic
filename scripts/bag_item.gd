@@ -5,6 +5,7 @@ extends Control
 @onready var count_label = $Count
 
 var marble_assigned: Marble
+var in_shop = false
 
 func _ready() -> void:
 	print("yoooo")

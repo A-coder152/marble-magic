@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c61a5v7xvpgd1"]
 
-[ext_resource type="Script" uid="uid://ceymok7btiimi" path="res://scripts/bag_item.gd" id="1_eyoes"]
+[ext_resource type="Script" uid="uid://ceymok7btiimi" path="res://scripts/bag_item.gd" id="1_npc26"]
 
 [node name="MarbleViewer" type="Control"]
 custom_minimum_size = Vector2(150, 150)
@@ -14,7 +14,7 @@ offset_right = -1002.0
 offset_bottom = -498.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eyoes")
+script = ExtResource("1_npc26")
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 1

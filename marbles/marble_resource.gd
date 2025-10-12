@@ -1,6 +1,7 @@
 class_name Marble extends Resource
 
 @export var title: String
+@export var cost: int
 @export var description: String
 @export var texture: Texture2D
 @export var temp_bag_title: String

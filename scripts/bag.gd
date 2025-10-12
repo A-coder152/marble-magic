@@ -2,7 +2,7 @@ extends Control
 
 @onready var marbles_container = $ScrollContainer/VBoxContainer/HBoxContainer
 
-var marble_bag_scene = preload("res://bag_item.tscn")
+var marble_bag_scene = preload("res://scenes/bag_item.tscn")
 
 var marbles_listed = []
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bo5twrprw2cma"]
 
-[ext_resource type="Script" uid="uid://xq1hgi1x2xku" path="res://scenes/bag.gd" id="1_6bjnb"]
+[ext_resource type="Script" uid="uid://xq1hgi1x2xku" path="res://scripts/bag.gd" id="1_6bjnb"]
 
 [node name="Bag" type="Control"]
 custom_minimum_size = Vector2(1152, 648)
