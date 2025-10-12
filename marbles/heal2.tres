@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://crtcjdgkrp4r2"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_8ucnh"]
+[ext_resource type="Texture2D" uid="uid://cgdkylyqisdjc" path="res://images/marbles/orangemarble.png" id="2_8ucnh"]
+
+[resource]
+script = ExtResource("1_8ucnh")
+title = "Orange Marble"
+cost = 2
+description = "Heals 2 HP. Peeling reduces the healing value."
+texture = ExtResource("2_8ucnh")
+damage = 0
+heal = 3
+effects = Array[int]([])
+effects_impact = Array[int]([])
+metadata/_custom_type_script = "uid://dohx58gu44s2"

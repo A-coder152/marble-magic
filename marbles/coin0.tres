@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://bpoq5wlbdfhxm"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_6dlck"]
+[ext_resource type="Texture2D" uid="uid://c2lby63veavjx" path="res://images/coin.png" id="2_6dlck"]
+
+[resource]
+script = ExtResource("1_6dlck")
+title = "Coin Marble"
+cost = 2
+description = "Gives 1 coin. Not sure how useful this is in battle..."
+texture = ExtResource("2_6dlck")
+damage = 0
+heal = 0
+effects = Array[int]([4])
+effects_impact = Array[int]([1])
+metadata/_custom_type_script = "uid://dohx58gu44s2"

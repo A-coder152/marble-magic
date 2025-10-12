@@ -7,12 +7,10 @@
 script = ExtResource("1_cscce")
 title = "Metal Marble"
 cost = 3
-description = "Leaves a sore spot and a sorer memory."
+description = "Deals 5 damage. Leaves a sore spot and a sorer memory."
 texture = ExtResource("2_6o5ur")
-temp_bag_title = "5"
 damage = 5
 heal = 0
-effects = 0
-damage2 = 0
-heal2 = 0
+effects = Array[int]([])
+effects_impact = Array[int]([])
 metadata/_custom_type_script = "uid://dohx58gu44s2"

@@ -7,12 +7,10 @@
 script = ExtResource("1_xepog")
 title = "Rubber Marble"
 cost = 0
-description = "Best when wrapped around thumb."
+description = "Deals 2 damage. Best when wrapped around thumb."
 texture = ExtResource("2_na3uc")
-temp_bag_title = "2"
 damage = 2
 heal = 0
-effects = 0
-damage2 = 0
-heal2 = 0
+effects = Array[int]([])
+effects_impact = Array[int]([])
 metadata/_custom_type_script = "uid://dohx58gu44s2"

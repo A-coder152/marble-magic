@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://dk2wotbuurs8o"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_k6lft"]
+[ext_resource type="Texture2D" uid="uid://l6r3s51vvm66" path="res://images/marbles/cabbagemarble.png" id="2_en6jj"]
+
+[resource]
+script = ExtResource("1_k6lft")
+title = "Cabbage Marble"
+cost = 4
+description = "I'm not sure you're supposed to eat it that way..."
+texture = ExtResource("2_en6jj")
+damage = 0
+heal = 5
+effects = Array[int]([])
+effects_impact = Array[int]([])
+metadata/_custom_type_script = "uid://dohx58gu44s2"

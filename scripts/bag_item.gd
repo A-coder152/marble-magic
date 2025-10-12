@@ -1,6 +1,5 @@
 extends Control
 
-@onready var bg_node = $BG
 @onready var button = $Button
 @onready var count_label = $Count
 @onready var cost_label = $Cost
@@ -34,9 +33,11 @@ func buy_marble():
 	if GameManager.coins >= marble_assigned.cost:
 		GameManager.bag_marbles.append(GameManager.all_marbles.find(marble_assigned))
 		GameManager.coins -= marble_assigned.cost
-	GameManager.refresh_shop.emit()
+		GameManager.refresh_shop.emit()
 
 func sell_marble():
-	GameManager.bag_marbles.erase(GameManager.all_marbles.find(marble_assigned))
-	GameManager.coins += int(cost_label.text)
-	GameManager.refresh_shop.emit()
+	var refund = int(cost_label.text)
+	if GameManager.coins >= -refund:
+		GameManager.bag_marbles.erase(GameManager.all_marbles.find(marble_assigned))
+		GameManager.coins += refund
+		GameManager.refresh_shop.emit()

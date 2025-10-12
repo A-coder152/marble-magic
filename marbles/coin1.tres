@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://bhdq2imcjsfcb"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_6m6wo"]
+[ext_resource type="Texture2D" uid="uid://ck1ag4p8gq5vl" path="res://images/siegecoin.png" id="2_6m6wo"]
+
+[resource]
+script = ExtResource("1_6m6wo")
+title = "Siege Coin Marble"
+cost = 5
+description = "What's it doing here..."
+texture = ExtResource("2_6m6wo")
+damage = 0
+heal = 0
+effects = Array[int]([4])
+effects_impact = Array[int]([3])
+metadata/_custom_type_script = "uid://dohx58gu44s2"

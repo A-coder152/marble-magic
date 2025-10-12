@@ -18,6 +18,7 @@ var all_marbles = [
 ]
 
 var current_marbles: Array = []
+var current_marbles_idx: Array[int] = []
 
 var selected_marble_indices: Array = []
 
@@ -65,8 +66,11 @@ func start_new_game():
 
 func _generate_new_marbles():
 	current_marbles.clear()
-	for i in range(4):
-		current_marbles.append(all_marbles[bag_marbles[randi_range(0, len(bag_marbles) - 1)]]) # Random value between 5 and 20
+	while len(current_marbles) < 4:
+		var next_marble_idx = randi_range(0, len(bag_marbles) - 1)
+		if next_marble_idx not in current_marbles_idx:
+			current_marbles.append(all_marbles[bag_marbles[randi_range(0, len(bag_marbles) - 1)]])
+			current_marbles_idx.append(next_marble_idx)
 	print("New marbles generated: ", current_marbles)
 
 func handle_marble_selection(index: int):
@@ -102,6 +106,7 @@ func confirm_selection():
 		)
 	elif current_turn_phase == TurnPhase.TAKE_2_SELECTION:
 		print("Take 2 Actual Damage: ", total_chosen_damage)
+		apply_effects(chosen_values)
 		_apply_damage_to_enemy(total_chosen_damage)
 		_set_turn_phase(TurnPhase.TURN_END)
 		await get_tree().create_timer(1.75 if enemy_health > 0 else 2.25).timeout
@@ -112,6 +117,16 @@ func _apply_damage_to_enemy(amount: int):
 	print("Enemy health after damage: ", enemy_health)
 	health_changed.emit("enemy", enemy_health, enemy_max_health)
 	damage_dealt.emit(amount, "enemy")
+
+func apply_effects(marbles: Array[Marble]):
+	for marble in marbles:
+		if marble.heal:
+			player_health = min(player_max_health, player_health + marble.heal)
+			health_changed.emit("player", player_health, player_max_health)
+		for effect in marble.effects:
+			match effect:
+				marble.EFFECTS.COIN:
+					coins += marble.effects_impact[marble.effects.find(effect)]
 
 func _enemy_turn():
 	var enemy_damage = randi_range(1, enemy_max_dmg) # Random damage for enemy

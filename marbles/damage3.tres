@@ -7,12 +7,10 @@
 script = ExtResource("1_phaq8")
 title = "Plastic Marble"
 cost = 1
-description = "Toddlers see this as a delicacy."
+description = "Deals 3 damage. Toddlers see this as a delicacy."
 texture = ExtResource("2_5f7mq")
-temp_bag_title = "3"
 damage = 3
 heal = 0
-effects = 0
-damage2 = 0
-heal2 = 0
+effects = Array[int]([])
+effects_impact = Array[int]([])
 metadata/_custom_type_script = "uid://dohx58gu44s2"

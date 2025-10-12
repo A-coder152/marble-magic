@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://csl0ddj6vqiib"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_08g1n"]
+[ext_resource type="Texture2D" uid="uid://m5huiqfhfaxb" path="res://images/marbles/peamarble.png" id="2_08g1n"]
+
+[resource]
+script = ExtResource("1_08g1n")
+title = "Pea Marble"
+cost = 0
+description = "Heals 1 HP. Small veggie, quick snack."
+texture = ExtResource("2_08g1n")
+damage = 0
+heal = 1
+effects = Array[int]([])
+effects_impact = Array[int]([])
+metadata/_custom_type_script = "uid://dohx58gu44s2"

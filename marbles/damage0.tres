@@ -7,12 +7,10 @@
 script = ExtResource("1_ujakj")
 title = "Empty Marble"
 cost = -2
-description = "Why would you have this?"
+description = "Does nothing. Why would you have this?"
 texture = ExtResource("2_fopyc")
-temp_bag_title = "0"
 damage = 0
 heal = 0
-effects = 0
-damage2 = 0
-heal2 = 0
+effects = Array[int]([])
+effects_impact = Array[int]([])
 metadata/_custom_type_script = "uid://dohx58gu44s2"
