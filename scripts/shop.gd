@@ -3,6 +3,7 @@ extends Control
 @onready var cont_1 = $HBoxContainer/VBoxContainer/cont1
 @onready var cont_2 = $HBoxContainer/VBoxContainer/cont2
 @onready var coins_label = $coins
+@onready var Bag = $Bag
 
 var marble_bag_scene = preload("res://scenes/bag_item.tscn")
 
@@ -10,9 +11,11 @@ var marbles_chosen = []
 
 func _ready() -> void:
 	GameManager.refresh_shop.connect(run_shop)
+	GameManager.close_bag.connect(close_bag)
 	run_shop()
 	
 func run_shop():
+	if Bag.visible: Bag._ready()
 	clear_children(cont_1)
 	clear_children(cont_2)
 	coins_label.text = "Coins: " + str(GameManager.coins) 
@@ -42,3 +45,13 @@ func _on_close_button_pressed() -> void:
 
 func update_coins_label():
 	coins_label.text = str(GameManager.coins)
+
+func _on_bag_btn_pressed() -> void:
+	Bag.in_shop = true
+	Bag.visible = true
+	Bag._ready()
+	$bgalpha.visible = true
+
+func close_bag():
+	Bag.visible = false
+	$bgalpha.visible = false

@@ -5,6 +5,7 @@ extends Control
 var marble_bag_scene = preload("res://scenes/bag_item.tscn")
 
 var marbles_listed = []
+var in_shop = false
 
 func _ready() -> void:
 	marbles_listed = []
@@ -16,6 +17,7 @@ func _ready() -> void:
 			print(marble_idx)
 			var new_marble = marble_bag_scene.instantiate()
 			new_marble._ready()
+			new_marble.shop_bag = in_shop
 			new_marble.marble_assigned = marble
 			new_marble.setup_marble()
 			marbles_listed.append(marble)

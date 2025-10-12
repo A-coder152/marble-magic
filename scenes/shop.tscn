@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2atoeymmwgmc"]
+[gd_scene load_steps=3 format=3 uid="uid://d2atoeymmwgmc"]
 
 [ext_resource type="Script" uid="uid://o3bd76c5uftp" path="res://scripts/shop.gd" id="1_lx5au"]
+[ext_resource type="PackedScene" uid="uid://bo5twrprw2cma" path="res://scenes/bag.tscn" id="2_xfvoa"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -78,4 +79,28 @@ offset_bottom = 75.0
 theme_override_font_sizes/font_size = 36
 text = "Coins: "
 
+[node name="BagBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 188.0
+offset_right = 372.0
+offset_bottom = 401.0
+theme_override_font_sizes/font_size = 30
+text = "Bag"
+
+[node name="bgalpha" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.717647)
+
+[node name="Bag" parent="." instance=ExtResource("2_xfvoa")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="Button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="BagBtn" to="." method="_on_bag_btn_pressed"]

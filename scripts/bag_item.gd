@@ -7,6 +7,7 @@ extends Control
 
 var marble_assigned: Marble
 var in_shop = false
+var shop_bag = false
 
 func _ready() -> void:
 	print("yoooo")
@@ -16,6 +17,10 @@ func setup_marble():
 		cost_label.text = str(marble_assigned.cost)
 		cost_label.visible = true
 		button.pressed.connect(buy_marble)
+	elif shop_bag:
+		cost_label.text = str(marble_assigned.cost - 1)
+		cost_label.visible = true
+		button.pressed.connect(sell_marble)
 	var count = 0
 	for marble in GameManager.bag_marbles:
 		if GameManager.all_marbles[marble] == marble_assigned:
@@ -28,4 +33,9 @@ func buy_marble():
 	if GameManager.coins >= marble_assigned.cost:
 		GameManager.bag_marbles.append(GameManager.all_marbles.find(marble_assigned))
 		GameManager.coins -= marble_assigned.cost
+	GameManager.refresh_shop.emit()
+
+func sell_marble():
+	GameManager.bag_marbles.erase(GameManager.all_marbles.find(marble_assigned))
+	GameManager.coins += int(cost_label.text)
 	GameManager.refresh_shop.emit()
