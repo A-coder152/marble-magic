@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Marble" load_steps=2 format=3 uid="uid://eonk3e3ilnxt"]
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://eonk3e3ilnxt"]
 
 [ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_ujakj"]
+[ext_resource type="Texture2D" uid="uid://dckle35f0kduw" path="res://images/marbles/emptymarble.png" id="2_fopyc"]
 
 [resource]
 script = ExtResource("1_ujakj")
 title = "Empty Marble"
 cost = -2
 description = "Why would you have this?"
+texture = ExtResource("2_fopyc")
 temp_bag_title = "0"
 damage = 0
 heal = 0

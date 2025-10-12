@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="Marble" load_steps=2 format=3 uid="uid://boklkf4kph6xe"]
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://boklkf4kph6xe"]
 
 [ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_xepog"]
+[ext_resource type="Texture2D" uid="uid://bgfy2poq3ykdg" path="res://images/marbles/rubbermarble.png" id="2_na3uc"]
 
 [resource]
 script = ExtResource("1_xepog")
 title = "Rubber Marble"
+cost = 0
 description = "Best when wrapped around thumb."
+texture = ExtResource("2_na3uc")
 temp_bag_title = "2"
 damage = 2
 heal = 0

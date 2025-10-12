@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Marble" load_steps=2 format=3 uid="uid://d23vkr4npjgte"]
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://d23vkr4npjgte"]
 
 [ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_7winw"]
+[ext_resource type="Texture2D" uid="uid://d1jdsxmkprppg" path="res://images/marbles/papermarble.png" id="2_knfa7"]
 
 [resource]
 script = ExtResource("1_7winw")
 title = "Paper Marble"
 cost = -1
 description = "Too smooth to cause a paper cut"
+texture = ExtResource("2_knfa7")
 temp_bag_title = "1"
 damage = 1
 heal = 0

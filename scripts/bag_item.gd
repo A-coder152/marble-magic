@@ -21,12 +21,13 @@ func setup_marble():
 		cost_label.text = str(marble_assigned.cost - 1)
 		cost_label.visible = true
 		button.pressed.connect(sell_marble)
+	button.texture_normal = marble_assigned.texture
 	var count = 0
 	for marble in GameManager.bag_marbles:
 		if GameManager.all_marbles[marble] == marble_assigned:
 			count += 1
 	count_label.text = str(count)
-	button.text = marble_assigned.temp_bag_title
+	#button.text = marble_assigned.temp_bag_title
 	button.tooltip_text = marble_assigned.title + ": " + marble_assigned.description
 
 func buy_marble():

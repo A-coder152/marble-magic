@@ -18,7 +18,7 @@ func run_shop():
 	if Bag.visible: Bag._ready()
 	clear_children(cont_1)
 	clear_children(cont_2)
-	coins_label.text = "Coins: " + str(GameManager.coins) 
+	coins_label.text = str(GameManager.coins) 
 	print("tararaal ", GameManager.coins)
 	while len(marbles_chosen) < 6:
 		var random_marble = GameManager.all_marbles[randi_range(0, len(GameManager.all_marbles) -1)]

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Marble" load_steps=2 format=3 uid="uid://sgv8yovrj18k"]
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://sgv8yovrj18k"]
 
 [ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_exb84"]
+[ext_resource type="Texture2D" uid="uid://dmjpyoiegkdo0" path="res://images/marbles/glassmarble.png" id="2_jyt4c"]
 
 [resource]
 script = ExtResource("1_exb84")
 title = "Glass Marble"
 cost = 2
 description = "The OG. Definitely painful"
+texture = ExtResource("2_jyt4c")
 temp_bag_title = "4"
 damage = 4
 heal = 0

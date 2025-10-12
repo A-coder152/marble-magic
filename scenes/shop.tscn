@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2atoeymmwgmc"]
+[gd_scene load_steps=4 format=3 uid="uid://d2atoeymmwgmc"]
 
 [ext_resource type="Script" uid="uid://o3bd76c5uftp" path="res://scripts/shop.gd" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://ck1ag4p8gq5vl" path="res://images/siegecoin.png" id="2_1l46r"]
 [ext_resource type="PackedScene" uid="uid://bo5twrprw2cma" path="res://scenes/bag.tscn" id="2_xfvoa"]
 
 [node name="Control" type="Control"]
@@ -72,10 +73,10 @@ text = "Close Shop"
 
 [node name="coins" type="Label" parent="."]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 25.0
-offset_right = 142.0
-offset_bottom = 75.0
+offset_left = 128.0
+offset_top = 34.0
+offset_right = 242.0
+offset_bottom = 84.0
 theme_override_font_sizes/font_size = 36
 text = "Coins: "
 
@@ -87,6 +88,16 @@ offset_right = 372.0
 offset_bottom = 401.0
 theme_override_font_sizes/font_size = 30
 text = "Bag"
+
+[node name="coinimg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 123.0
+offset_bottom = 114.0
+texture = ExtResource("2_1l46r")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="bgalpha" type="ColorRect" parent="."]
 visible = false

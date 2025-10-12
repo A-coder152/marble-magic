@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Marble" load_steps=2 format=3 uid="uid://vcb5ix65au4y"]
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://vcb5ix65au4y"]
 
 [ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_phaq8"]
+[ext_resource type="Texture2D" uid="uid://bf5tsbfybowi6" path="res://images/marbles/plasticmarble.png" id="2_5f7mq"]
 
 [resource]
 script = ExtResource("1_phaq8")
 title = "Plastic Marble"
 cost = 1
 description = "Toddlers see this as a delicacy."
+texture = ExtResource("2_5f7mq")
 temp_bag_title = "3"
 damage = 3
 heal = 0

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Marble" load_steps=2 format=3 uid="uid://boxqq5clug2q1"]
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://boxqq5clug2q1"]
 
 [ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_cscce"]
+[ext_resource type="Texture2D" uid="uid://ctaoroebio6bp" path="res://images/marbles/metalmarble.png" id="2_6o5ur"]
 
 [resource]
 script = ExtResource("1_cscce")
 title = "Metal Marble"
 cost = 3
 description = "Leaves a sore spot and a sorer memory."
+texture = ExtResource("2_6o5ur")
 temp_bag_title = "5"
 damage = 5
 heal = 0
