@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://b4lp6ovcquqov"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_1ig6g"]
+[ext_resource type="Texture2D" uid="uid://dvng320lonafb" path="res://images/marbles/bombmarble.png" id="2_1ig6g"]
+
+[resource]
+script = ExtResource("1_1ig6g")
+title = "Bomb Marble"
+cost = 3
+description = "Deals 8 damage to enemy, 2 to self. You've won, but at what cost?"
+texture = ExtResource("2_1ig6g")
+damage = 8
+heal = -2
+effects = Array[int]([])
+effects_impact = Array[int]([])
+metadata/_custom_type_script = "uid://dohx58gu44s2"

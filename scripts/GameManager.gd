@@ -14,7 +14,20 @@ var all_marbles = [
 	preload("uid://boklkf4kph6xe"),
 	preload("res://marbles/damage3.tres"),
 	preload("uid://sgv8yovrj18k"),
-	preload("uid://boxqq5clug2q1")
+	preload("uid://boxqq5clug2q1"),
+	preload("uid://csl0ddj6vqiib"),
+	preload("uid://crtcjdgkrp4r2"),
+	preload("uid://dk2wotbuurs8o"),
+	preload("uid://bad7q3xqjvvym"),
+	preload("uid://m8wqtmrcn0h2"),
+	preload("uid://bo6jao5010osi"),
+	preload("uid://bpoq5wlbdfhxm"),
+	preload("uid://bhdq2imcjsfcb"),
+	preload("uid://b4lp6ovcquqov"),
+	preload("uid://bf4ph26kmbl8v"),
+	preload("uid://cntoynq237v6s"),
+	preload("uid://brnx3vjdcscn0"),
+	preload("uid://csirbqxk5dq7d")
 ]
 
 var current_marbles: Array = []
@@ -32,7 +45,7 @@ enum TurnPhase {
 var current_turn_phase: int = TurnPhase.TAKE_1_SELECTION
 
 var potential_damage: int = 0
-var bag_marbles: Array = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]
+var bag_marbles: Array = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5]
 
 signal marble_selected(index: int)
 signal selection_confirmed()
@@ -99,10 +112,12 @@ func confirm_selection():
 	if current_turn_phase == TurnPhase.TAKE_1_SELECTION:
 		potential_damage = total_chosen_damage
 		print("Take 1 Potential Damage: ", potential_damage)
+		health_changed.emit("enemy", max(enemy_health - potential_damage, 0), enemy_max_health)
 		_set_turn_phase(TurnPhase.TAKE_1_REVEAL)
 		get_tree().create_timer(1.5).timeout.connect(func():
 			_set_turn_phase(TurnPhase.TAKE_2_SELECTION)
 			selected_marble_indices.clear()
+			health_changed.emit("enemy", max(enemy_health, 0), enemy_max_health)
 		)
 	elif current_turn_phase == TurnPhase.TAKE_2_SELECTION:
 		print("Take 2 Actual Damage: ", total_chosen_damage)

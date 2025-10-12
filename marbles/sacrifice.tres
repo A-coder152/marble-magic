@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://csirbqxk5dq7d"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_wxt3n"]
+[ext_resource type="Texture2D" uid="uid://bw64ptyaacota" path="res://images/marbles/sacrifice.png" id="2_wxt3n"]
+
+[resource]
+script = ExtResource("1_wxt3n")
+title = "Marble of Sacrifice"
+cost = 7
+description = "One-shots the enemy, deals 5 damage to player. Sacrifices... must... be... made."
+texture = ExtResource("2_wxt3n")
+damage = 0
+heal = -5
+effects = Array[int]([1])
+effects_impact = Array[int]([1])
+metadata/_custom_type_script = "uid://dohx58gu44s2"

@@ -8,6 +8,7 @@ extends Control
 var marble_bag_scene = preload("res://scenes/bag_item.tscn")
 
 var marbles_chosen = []
+var purchases_since_refresh = -1
 
 func _ready() -> void:
 	GameManager.refresh_shop.connect(run_shop)
@@ -18,6 +19,10 @@ func run_shop():
 	if Bag.visible: Bag._ready()
 	clear_children(cont_1)
 	clear_children(cont_2)
+	if purchases_since_refresh >= 3:
+		marbles_chosen = []
+		purchases_since_refresh = 0
+	purchases_since_refresh += 1
 	coins_label.text = str(GameManager.coins) 
 	print("tararaal ", GameManager.coins)
 	while len(marbles_chosen) < 6:
@@ -43,8 +48,6 @@ func clear_children(node):
 func _on_close_button_pressed() -> void:
 	GameManager.close_shop.emit()
 
-func update_coins_label():
-	coins_label.text = str(GameManager.coins)
 
 func _on_bag_btn_pressed() -> void:
 	Bag.in_shop = true

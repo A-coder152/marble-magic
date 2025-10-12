@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://cntoynq237v6s"]
+
+[ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_xi4wy"]
+[ext_resource type="Texture2D" uid="uid://ckmi8rkj1bvcy" path="res://images/marbles/blazemarble.png" id="2_1y7ao"]
+
+[resource]
+script = ExtResource("1_xi4wy")
+title = "Blaze Marble"
+cost = 4
+description = "Takes away 1/3 of the enemy's health. Burnin' hot."
+texture = ExtResource("2_1y7ao")
+damage = 0
+heal = 0
+effects = Array[int]([1])
+effects_impact = Array[int]([3])
+metadata/_custom_type_script = "uid://dohx58gu44s2"

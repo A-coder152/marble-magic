@@ -11,6 +11,6 @@ description = "What's it doing here..."
 texture = ExtResource("2_6m6wo")
 damage = 0
 heal = 0
-effects = Array[int]([4])
+effects = Array[int]([2])
 effects_impact = Array[int]([3])
 metadata/_custom_type_script = "uid://dohx58gu44s2"

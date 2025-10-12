@@ -2,12 +2,11 @@ class_name Marble extends Resource
 
 enum EFFECTS {
 	SHOW,
-	ANTIDMG,
-	ANTIHEAL,
 	MEGADMG,
 	COIN,
 	MEGAHEAL,
-	STUN
+	STUN,
+	MAXHP
 }
 
 @export var title: String

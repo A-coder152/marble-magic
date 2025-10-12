@@ -7,7 +7,7 @@
 script = ExtResource("1_k6lft")
 title = "Cabbage Marble"
 cost = 4
-description = "I'm not sure you're supposed to eat it that way..."
+description = "Heals 4 HP. I'm not sure you're supposed to eat it that way..."
 texture = ExtResource("2_en6jj")
 damage = 0
 heal = 5
