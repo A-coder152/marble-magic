@@ -10,7 +10,7 @@ var all_marbles = [
 	preload("uid://eonk3e3ilnxt"),
 	preload("uid://d23vkr4npjgte"),
 	preload("uid://boklkf4kph6xe"),
-	preload("uid://vcb5ix65au4y"),
+	preload("res://marbles/damage3.tres"),
 	preload("uid://sgv8yovrj18k"),
 	preload("uid://boxqq5clug2q1")
 ]
@@ -37,6 +37,7 @@ signal turn_phase_changed(new_phase: int)
 signal health_changed(entity_type: String, current_hp: int, max_hp: int)
 signal damage_dealt(amount: int, target: String)
 signal game_over(win: bool)
+signal close_bag()
 
 func _ready():
 	print("GameManager ready and loaded!")

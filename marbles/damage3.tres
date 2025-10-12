@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_phaq8")
-title = "Rubber Marble"
-description = "Best when wrapped around thumb."
-temp_bag_title = "2"
-damage = 2
+title = "Plastic Marble"
+description = "Toddlers see this as a delicacy."
+temp_bag_title = "3"
+damage = 3
 heal = 0
 effects = 0
 damage2 = 0

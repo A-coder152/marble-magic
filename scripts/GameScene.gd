@@ -31,6 +31,7 @@ func _connect_signals():
 	#GameManager.damage_dealt.connect(_on_damage_dealt)
 	GameManager.game_over.connect(_on_game_over)
 	confirm_button.pressed.connect(GameManager.confirm_selection)
+	GameManager.close_bag.connect(close_bag)
 
 
 func _on_health_changed(entity_type: String, current_hp: int, max_hp: int):
@@ -117,3 +118,11 @@ func _on_reset_game_pressed() -> void:
 	GameManager.enemy_max_health = 5
 	GameManager.enemy_max_dmg = 2
 	_on_round_lost_game_pressed()
+
+func _on_bag_btn_pressed() -> void:
+	$Bag.visible = true
+	$BGAlpha.visible = true
+
+func close_bag():
+	$Bag.visible = false
+	$BGAlpha.visible = false

@@ -1,12 +1,20 @@
-[gd_scene format=3 uid="uid://bo5twrprw2cma"]
+[gd_scene load_steps=2 format=3 uid="uid://bo5twrprw2cma"]
+
+[ext_resource type="Script" uid="uid://xq1hgi1x2xku" path="res://scenes/bag.gd" id="1_6bjnb"]
 
 [node name="Bag" type="Control"]
+custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -431.0
+offset_top = 72.0
+offset_right = 721.0
+offset_bottom = 720.0
 grow_horizontal = 2
-grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_6bjnb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -27,6 +35,8 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1152, 0)
@@ -37,4 +47,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Close Bag"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Button" to="." method="_on_close_button_pressed"]

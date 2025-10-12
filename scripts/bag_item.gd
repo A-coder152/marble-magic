@@ -4,14 +4,16 @@ extends Control
 @onready var button = $Button
 @onready var count_label = $Count
 
-var marble_assigned
+var marble_assigned: Marble
 
 func _ready() -> void:
-	pass
+	print("yoooo")
 	
 func setup_marble():
 	var count = 0
-	for marble in GameManager.marble_values:
-		if marble == marble_assigned:
+	for marble in GameManager.bag_marbles:
+		if GameManager.all_marbles[marble] == marble_assigned:
 			count += 1
-	count_label.text = count
+	count_label.text = str(count)
+	button.text = marble_assigned.temp_bag_title
+	button.tooltip_text = marble_assigned.title + ": " + marble_assigned.description
