@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwk4ath0ei7ax"]
+[gd_scene load_steps=8 format=3 uid="uid://bwk4ath0ei7ax"]
 
 [ext_resource type="Script" uid="uid://ckfuboxgcdu1x" path="res://scripts/GameScene.gd" id="1_mlf6e"]
 [ext_resource type="Texture2D" uid="uid://cju3wng6rhao8" path="res://images/enemy.png" id="2_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://bo5twrprw2cma" path="res://scenes/bag.tscn" id="2_onqr8"]
 [ext_resource type="Texture2D" uid="uid://dvldwwbyju003" path="res://images/bg.png" id="2_y3j0m"]
 [ext_resource type="PackedScene" uid="uid://d2atoeymmwgmc" path="res://scenes/shop.tscn" id="3_ycayy"]
+[ext_resource type="FontFile" uid="uid://c82d4iiiyqgqc" path="res://Philosopher-Regular.ttf" id="4_kk2rg"]
 [ext_resource type="Texture2D" uid="uid://cthtkvk6httgc" path="res://images/bag.png" id="4_rurhu"]
 
 [node name="Main" type="Control"]
@@ -83,8 +84,10 @@ offset_bottom = 322.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.345098, 0.72549, 0.717647, 1)
+theme_override_fonts/font = ExtResource("4_kk2rg")
 theme_override_font_sizes/font_size = 20
 text = "Game Message"
+horizontal_alignment = 1
 
 [node name="MarbleContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(500, 100)
@@ -136,7 +139,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.537255, 0.207843, 1, 0.537255)
+mouse_filter = 2
+color = Color(0.913725, 0.878431, 0.294118, 0.286275)
 
 [node name="BGAlpha" type="ColorRect" parent="."]
 visible = false
@@ -170,14 +174,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.581033, 0.581033, 0.581033, 1)
+color = Color(0.4, 0.290196, 0.443137, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="RoundWonPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = 41.0
+offset_right = -87.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.545098, 0.4, 0.533333, 1)
 
 [node name="Label" type="Label" parent="RoundWonPopup"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 113.0
+offset_top = 35.0
+offset_bottom = 148.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.905882, 0.745098, 0.909804, 1)
 theme_override_font_sizes/font_size = 40
 text = "Round won!"
 horizontal_alignment = 1
@@ -189,10 +208,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 82.0
-offset_top = -61.0
-offset_right = -78.0
-offset_bottom = -30.0
+offset_left = 121.0
+offset_top = -94.0
+offset_right = -125.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Next round"
@@ -203,10 +222,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 82.0
-offset_top = -108.0
-offset_right = -78.0
-offset_bottom = -77.0
+offset_left = 121.0
+offset_top = -136.0
+offset_right = -125.0
+offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Shop"
@@ -233,7 +252,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.581033, 0.581033, 0.581033, 1)
+color = Color(0.423529, 0.298039, 0.462745, 1)
 
 [node name="Label" type="Label" parent="RoundLostPopup"]
 layout_mode = 1

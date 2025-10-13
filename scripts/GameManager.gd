@@ -5,8 +5,10 @@ var coins = 0
 var player_health: int = 20
 var enemy_health: int = 20
 var player_max_health: int = 25
+
 var enemy_max_health: int = 5
 var enemy_max_dmg: int = 2
+var enemy_stunned = false
 
 var all_marbles = [
 	preload("uid://eonk3e3ilnxt"),
@@ -134,14 +136,31 @@ func _apply_damage_to_enemy(amount: int):
 	damage_dealt.emit(amount, "enemy")
 
 func apply_effects(marbles: Array[Marble]):
+	#player_health = min(player_max_health, player_health + marble.heal)
+	#health_changed.emit("player", player_health, player_max_health)
+	pass
+
+func calculate_effects(marbles: Array[Marble]):
+	var sim_enemy_health = enemy_health
+	var sim_player_health = player_health
+	var sim_coins = coins
+	var sim_stunned = false
+	var sim_player_max_hp = player_max_health
 	for marble in marbles:
-		if marble.heal:
-			player_health = min(player_max_health, player_health + marble.heal)
-			health_changed.emit("player", player_health, player_max_health)
+		sim_enemy_health = max(0, min(enemy_max_health, enemy_health - marble.damage))
+		sim_player_health = max(0, min(player_max_health, player_health + marble.heal))
 		for effect in marble.effects:
 			match effect:
 				marble.EFFECTS.COIN:
-					coins += marble.effects_impact[marble.effects.find(effect)]
+					sim_coins += marble.effects_impact[marble.effects.find(effect)]
+				marble.EFFECTS.STUN:
+					sim_stunned = true
+				marble.EFFECTS.MAXHP:
+					sim_player_max_hp = player_max_health + marble.effects_impact[marble.effects.find(effect)]
+				marble.EFFECTS.MEGADMG:
+					sim_enemy_health *= 1 - (1. / marble.effects_impact[marble.effects.find(effect)])
+				marble.EFFECTS.MEGAHEAL:
+					sim_player_health += (1. / marble.effects_impact[marble.effects.find(effect)]) * (player_max_health - player_health)
 
 func _enemy_turn():
 	var enemy_damage = randi_range(1, enemy_max_dmg) # Random damage for enemy

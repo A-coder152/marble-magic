@@ -9,6 +9,7 @@ extends Control
 @onready var bgalpha = $BGAlpha
 @onready var Shop = $Shop
 @onready var Bag = $Bag
+@onready var bgbeta = $BGBeta
 
 var marble_instances: Array = [] 
 
@@ -72,6 +73,7 @@ func _on_game_over(win: bool):
 func _update_ui_for_phase(phase: int):
 	match phase:
 		GameManager.TurnPhase.TAKE_1_SELECTION:
+			bgbeta.visible = true
 			message_label.text = "Choose 2 marbles for Take 1 (Damage Preview)."
 			confirm_button.text = "Confirm Take 1 Selection"
 			confirm_button.disabled = false
@@ -85,6 +87,7 @@ func _update_ui_for_phase(phase: int):
 			_reset_marble_selection_visuals()
 			
 		GameManager.TurnPhase.TAKE_2_SELECTION:
+			bgbeta.visible = false
 			message_label.text = "Choose 2 marbles for Take 2 (Actual Damage)."
 			confirm_button.text = "Confirm Take 2 Selection"
 			confirm_button.disabled = false
