@@ -47,7 +47,7 @@ enum TurnPhase {
 var current_turn_phase: int = TurnPhase.TAKE_1_SELECTION
 
 var potential_damage: int = 0
-var bag_marbles: Array = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5]
+var bag_marbles: Array = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5]
 
 signal marble_selected(index: int)
 signal selection_confirmed()
@@ -201,7 +201,7 @@ func _end_turn():
 		_set_turn_phase(TurnPhase.GAME_OVER)
 		game_over.emit(true)
 	else:
-		await _enemy_turn()
+		_enemy_turn()
 		if player_health <= 0:
 			_set_turn_phase(TurnPhase.GAME_OVER)
 			game_over.emit(false) 

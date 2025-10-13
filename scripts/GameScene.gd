@@ -126,12 +126,12 @@ func _reset_marble_selection_visuals():
 
 func _on_round_won_pressed() -> void:
 	$Enemy.texture = enemy_textures[enemy_on]
+	enemy_on = (enemy_on + 1) % 3
 	GameManager.start_new_game()
 	bgalpha.visible = false
 	$RoundWonPopup.visible = false
 
 func _on_round_lost_game_pressed() -> void:
-	enemy_on = (enemy_on + 1) % 3
 	GameManager.start_new_game()
 	bgalpha.visible = false
 	$RoundLostPopup.visible = false
@@ -168,3 +168,11 @@ func change_coins():
 
 func change_stunned():
 	$Stunned.visible = true if !$Stunned.visible else false
+
+
+func _on_button_pressed() -> void:
+	$Lore.hide()
+
+
+func _on_button_tutorial_pressed() -> void:
+	$Tutorial.hide()

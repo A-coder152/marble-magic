@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwk4ath0ei7ax"]
+[gd_scene load_steps=15 format=3 uid="uid://bwk4ath0ei7ax"]
 
 [ext_resource type="Script" uid="uid://ckfuboxgcdu1x" path="res://scripts/GameScene.gd" id="1_mlf6e"]
 [ext_resource type="PackedScene" uid="uid://bo5twrprw2cma" path="res://scenes/bag.tscn" id="2_onqr8"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://c2lby63veavjx" path="res://images/coin.png" id="4_mw25s"]
 [ext_resource type="Texture2D" uid="uid://cthtkvk6httgc" path="res://images/bag.png" id="4_rurhu"]
 [ext_resource type="Texture2D" uid="uid://dxfbqclwtkvum" path="res://images/enemy2.png" id="5_utbpp"]
+[ext_resource type="Texture2D" uid="uid://bf5tsbfybowi6" path="res://images/marbles/plasticmarble.png" id="10_5ay1a"]
+[ext_resource type="Texture2D" uid="uid://ckmi8rkj1bvcy" path="res://images/marbles/blazemarble.png" id="11_ldkr4"]
+[ext_resource type="Texture2D" uid="uid://m5huiqfhfaxb" path="res://images/marbles/peamarble.png" id="12_liy57"]
+[ext_resource type="Texture2D" uid="uid://cju3wng6rhao8" path="res://images/enemy1.png" id="13_mwyo0"]
+[ext_resource type="Texture2D" uid="uid://6b8ni7ihyll5" path="res://images/enemy3.png" id="14_s76x2"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -175,6 +180,15 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.913725, 0.878431, 0.294118, 0.286275)
 
+[node name="Label" type="Label" parent="BGBeta"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 64.0
+offset_right = 206.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 50
+text = "Test round"
+
 [node name="BGAlpha" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
@@ -334,8 +348,211 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.266667, 0.188235, 0.329412, 1)
+
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 32.0
+offset_right = 904.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0.596078, 0.443137, 0.564706, 1)
+theme_override_font_sizes/font_size = 60
+text = "GAME INSTRUCTIONS"
+
+[node name="Label2" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 96.0
+offset_right = 991.0
+offset_bottom = 405.0
+theme_override_colors/font_color = Color(0.596078, 0.443137, 0.564706, 1)
+theme_override_font_sizes/font_size = 24
+text = "In a fight, you choose two marbles out of the four and hope for the best.
+
+However, the wizard's time travelling abilities give him a unique advantage.
+You have a \"Test Round\" that allows you to see the effect of the marbles
+before actually doing anything. Use this test round to find out which marbles
+are strong... and which ones are duds.
+
+Your bag contains all your marbles.
+Here you'll see all the marbles in your bag, as well as how many you have.
+To see what each marble does, hover over it.
+
+In the shop, you get to buy new marbles, or sell marbles from your bag
+Just click on the marble, make sure you have enough couns,
+and your bag is now stronger!
+
+(note: some marbles are so bad, you can buy them for negative coins,
+but selling them will cost you.
+be careful of the wholesale bargains.)"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Tutorial"]
+layout_mode = 0
+offset_left = 389.0
+offset_top = 533.0
+offset_right = 794.0
+offset_bottom = 634.0
+theme_override_font_sizes/font_size = 60
+text = "I'm Ready!"
+
+[node name="Lore" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Lore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.266667, 0.188235, 0.329412, 1)
+
+[node name="Label" type="Label" parent="Lore"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 34.0
+offset_right = 763.0
+offset_bottom = 295.0
+theme_override_colors/font_color = Color(0.596078, 0.443137, 0.564706, 1)
+theme_override_font_sizes/font_size = 24
+text = "Once upon a time, 
+a magical wizard lived peacefully in the land. 
+He was popular for being kind, 
+but also for his strange magic practices.
+Hus favorite item was his bag of magic marbles.
+They could do all sorts of things, 
+and were super useful in dangeous encounters.
+He also can time travel, but he doesn't like using it a lot.
+Don't ask him why. 
+Those who did got hit with a few marbles in the head. 
+Some more magical than others."
+
+[node name="TextureRect" type="TextureRect" parent="Lore"]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 24.0
+offset_right = 998.0
+offset_bottom = 316.0
+texture = ExtResource("4_rurhu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Lore"]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 35.0
+offset_right = 1022.0
+offset_bottom = 147.0
+texture = ExtResource("10_5ay1a")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="Lore"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 94.0
+offset_right = 1110.0
+offset_bottom = 226.0
+texture = ExtResource("11_ldkr4")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="Lore"]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 164.0
+offset_right = 1067.0
+offset_bottom = 283.0
+texture = ExtResource("12_liy57")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="Lore"]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 318.0
+offset_right = 1122.0
+offset_bottom = 627.0
+theme_override_colors/font_color = Color(0.596078, 0.443137, 0.564706, 1)
+theme_override_font_sizes/font_size = 24
+text = "However, one day, he was kidnapped by a trio of criminals
+called \"THE FELT FEAR\".
+They hated this wizard's marbles, 
+as their unique magic kept the cities safe.
+They came up with a plan: to mix up the wizard's marbles,
+so that he wouldn't recognize what they did.
+
+When the wizard woke up, he relaized the trouble he was in.
+But he remembered his time traveling abilities.
+So he devised a plan:
+He would travel in time to see what the marbles do,
+then use that information to strategize a more powerful attack.
+Help the wizard escape THE FELT FEAR's grip!"
+
+[node name="TextureRect5" type="TextureRect" parent="Lore"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 415.0
+offset_right = 287.0
+offset_bottom = 643.0
+texture = ExtResource("13_mwyo0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect6" type="TextureRect" parent="Lore"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 301.0
+offset_right = 173.0
+offset_bottom = 478.0
+texture = ExtResource("5_utbpp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect7" type="TextureRect" parent="Lore"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 299.0
+offset_right = 414.0
+offset_bottom = 503.0
+texture = ExtResource("14_s76x2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Lore"]
+layout_mode = 0
+offset_left = 933.0
+offset_top = 607.0
+offset_right = 1143.0
+offset_bottom = 636.0
+text = "Let's Go1"
+
 [connection signal="pressed" from="BagBtn" to="." method="_on_bag_btn_pressed"]
 [connection signal="pressed" from="RoundWonPopup/Button" to="." method="_on_round_won_pressed"]
 [connection signal="pressed" from="RoundWonPopup/Shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="RoundLostPopup/Button" to="." method="_on_round_lost_game_pressed"]
 [connection signal="pressed" from="RoundLostPopup/Button2" to="." method="_on_reset_game_pressed"]
+[connection signal="pressed" from="Tutorial/Button" to="." method="_on_button_tutorial_pressed"]
+[connection signal="pressed" from="Lore/Button" to="." method="_on_button_pressed"]
