@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwk4ath0ei7ax"]
+[gd_scene load_steps=7 format=3 uid="uid://bwk4ath0ei7ax"]
 
 [ext_resource type="Script" uid="uid://ckfuboxgcdu1x" path="res://scripts/GameScene.gd" id="1_mlf6e"]
 [ext_resource type="Texture2D" uid="uid://cju3wng6rhao8" path="res://images/enemy.png" id="2_bw6k5"]
 [ext_resource type="PackedScene" uid="uid://bo5twrprw2cma" path="res://scenes/bag.tscn" id="2_onqr8"]
-[ext_resource type="Texture2D" uid="uid://bvqw8ef88ji7y" path="res://images/choppedbg.png" id="2_y3j0m"]
+[ext_resource type="Texture2D" uid="uid://dvldwwbyju003" path="res://images/bg.png" id="2_y3j0m"]
 [ext_resource type="PackedScene" uid="uid://d2atoeymmwgmc" path="res://scenes/shop.tscn" id="3_ycayy"]
+[ext_resource type="Texture2D" uid="uid://cthtkvk6httgc" path="res://images/bag.png" id="4_rurhu"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -117,15 +118,18 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Confirm Selection"
 
-[node name="BagBtn" type="Button" parent="."]
+[node name="BagBtn" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 456.0
-offset_right = 275.0
-offset_bottom = 583.0
-text = "Bag"
+offset_left = 70.0
+offset_top = 452.0
+offset_right = 244.0
+offset_bottom = 629.0
+texture_normal = ExtResource("4_rurhu")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="BGBeta" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

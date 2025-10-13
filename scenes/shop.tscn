@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2atoeymmwgmc"]
+[gd_scene load_steps=6 format=3 uid="uid://d2atoeymmwgmc"]
 
 [ext_resource type="Script" uid="uid://o3bd76c5uftp" path="res://scripts/shop.gd" id="1_lx5au"]
 [ext_resource type="Texture2D" uid="uid://c2lby63veavjx" path="res://images/coin.png" id="2_1l46r"]
+[ext_resource type="Texture2D" uid="uid://b3ehtv1cr1rml" path="res://images/shopbg.png" id="2_2fc2m"]
 [ext_resource type="PackedScene" uid="uid://bo5twrprw2cma" path="res://scenes/bag.tscn" id="2_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://cthtkvk6httgc" path="res://images/bag.png" id="3_8r1wq"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,7 +15,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lx5au")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -19.0
+offset_right = 192.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2fc2m")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,12 +82,12 @@ vertical_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 524.0
-offset_right = 351.0
-offset_bottom = 599.0
+offset_left = 51.0
+offset_top = 194.0
+offset_right = 323.0
+offset_bottom = 269.0
 theme_override_font_sizes/font_size = 48
-text = "Close Shop"
+text = "Leave Shop"
 
 [node name="coins" type="Label" parent="."]
 layout_mode = 0
@@ -80,14 +98,15 @@ offset_bottom = 84.0
 theme_override_font_sizes/font_size = 36
 text = "Coins: "
 
-[node name="BagBtn" type="Button" parent="."]
+[node name="BagBtn" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 78.0
-offset_top = 188.0
-offset_right = 372.0
-offset_bottom = 401.0
-theme_override_font_sizes/font_size = 30
-text = "Bag"
+offset_left = 42.0
+offset_top = 363.0
+offset_right = 336.0
+offset_bottom = 642.0
+texture_normal = ExtResource("3_8r1wq")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="coinimg" type="TextureRect" parent="."]
 layout_mode = 0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvqw8ef88ji7y"
-path="res://.godot/imported/choppedbg.png-0482e7cf24aa1c7f469f5d309cc6cbdc.ctex"
+uid="uid://cthtkvk6httgc"
+path="res://.godot/imported/bag.png-b1100f3c49c160492cd4d22318680b30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/choppedbg.png"
-dest_files=["res://.godot/imported/choppedbg.png-0482e7cf24aa1c7f469f5d309cc6cbdc.ctex"]
+source_file="res://images/bag.png"
+dest_files=["res://.godot/imported/bag.png-b1100f3c49c160492cd4d22318680b30.ctex"]
 
 [params]
 

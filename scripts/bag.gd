@@ -7,10 +7,13 @@ var marble_bag_scene = preload("res://scenes/bag_item.tscn")
 var marbles_listed = []
 var in_shop = false
 var counter = 1
+var since_last_change = 0
 
 func _ready() -> void:
+	since_last_change = 0
 	counter = 0
 	var marble_containers = [$ScrollContainer/VBoxContainer/HBoxContainer, $ScrollContainer/VBoxContainer/HBoxContainer2, $ScrollContainer/VBoxContainer/HBoxContainer3, $ScrollContainer/VBoxContainer/HBoxContainer4]
+	marbles_container = marble_containers[counter]
 	marbles_listed = []
 	for container in marble_containers:
 		for child in container.get_children():
@@ -26,11 +29,14 @@ func _ready() -> void:
 			new_marble.setup_marble()
 			marbles_listed.append(marble)
 			marbles_container.add_child(new_marble)
-		if len(marbles_container.get_children()) >= 6:
+			since_last_change += 1
+		if since_last_change >= 6:
+			print(marbles_container.get_children())
 			var old_marbles_container = marbles_container
 			counter += 1
 			marbles_container = marble_containers[counter]
 			print(marbles_container == old_marbles_container)
+			since_last_change = 0
 
 
 func _on_close_button_pressed() -> void:

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Marble" load_steps=3 format=3 uid="uid://m8wqtmrcn0h2"]
 
 [ext_resource type="Script" uid="uid://dohx58gu44s2" path="res://marbles/marble_resource.gd" id="1_y5k2q"]
-[ext_resource type="Texture2D" uid="uid://blelhdkpa0i3" path="res://images/marbles/hypnosis.png" id="2_y5k2q"]
+[ext_resource type="Texture2D" uid="uid://uumqbagpk3pj" path="res://images/marbles/lightning.png" id="2_y5k2q"]
 
 [resource]
 script = ExtResource("1_y5k2q")
