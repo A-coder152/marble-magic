@@ -4,7 +4,15 @@ This is such a dumb project man it's so stupid why did I ever think this was gon
 
 uhmmm moving on
 
-## HOW 2 PLAY
+## main attacking concept
+
+I have to give this its own section cause its so weird
+
+you have the bag of marbles, each turn 4 are randomly chosen, you don't know what they are. every turn you choose 2 marbles to attack with.
+
+you first have a "test turn" to test out 2 marbles and see what their impact is, then a real turn where what you do counts. so based on the test turn results, you have to think if it was good enough or if you'll risk it for the other two marbles.
+
+## HOW 2 PLAY (more detailed)
 
 In a fight, you choose two marbles out of the four and hope for the best. However, the wizard's time travelling abilities give him a unique advantage. You have a "Test Round" that allows you to see the effect of the marbles before actually doing anything. Use this test round to find out which marbles are strong... and which ones are duds.
 
