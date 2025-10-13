@@ -119,12 +119,20 @@ func confirm_selection():
 		var farter = calculate_effects(chosen_values)
 		health_changed.emit("enemy", farter[1], enemy_max_health)
 		health_changed.emit("player", farter[0], farter[3])
+		if farter[4]: change_stunned.emit()
+		if farter[2]:
+			coins += farter[2]
+			change_coins.emit()
 		_set_turn_phase(TurnPhase.TAKE_1_REVEAL)
 		get_tree().create_timer(1.5).timeout.connect(func():
 			_set_turn_phase(TurnPhase.TAKE_2_SELECTION)
 			selected_marble_indices.clear()
 			health_changed.emit("enemy", max(enemy_health, 0), enemy_max_health)
 			health_changed.emit("player", max(player_health, 0), player_max_health)
+			if farter[4]: change_stunned.emit()
+			if farter[2]:
+				coins -= farter[2]
+				change_coins.emit()
 		)
 	elif current_turn_phase == TurnPhase.TAKE_2_SELECTION:
 		print("Take 2 Actual Damage: ", total_chosen_damage)
@@ -143,7 +151,7 @@ func apply_effects(marbles: Array[Marble]):
 	var augh = calculate_effects(marbles)
 	player_health = augh[0]
 	_apply_damage_to_enemy(enemy_health - augh[1])
-	coins = augh[2]
+	coins += augh[2]
 	player_max_health = augh[3]
 	enemy_stunned = augh[4]
 	health_changed.emit("player", player_health, player_max_health)
@@ -153,7 +161,7 @@ func apply_effects(marbles: Array[Marble]):
 func calculate_effects(marbles: Array[Marble]):
 	var sim_enemy_health = enemy_health
 	var sim_player_health = player_health
-	var sim_coins = coins
+	var sim_coins = 0
 	var sim_stunned = false
 	var sim_player_max_hp = player_max_health
 	for marble in marbles:
@@ -183,6 +191,7 @@ func _enemy_turn():
 	print("Player health after enemy attack: ", player_health)
 	health_changed.emit("player", player_health, player_max_health)
 	damage_dealt.emit(enemy_damage, "player")
+	return
 
 func _end_turn():
 	if player_health <= 0:
@@ -192,7 +201,7 @@ func _end_turn():
 		_set_turn_phase(TurnPhase.GAME_OVER)
 		game_over.emit(true)
 	else:
-		_enemy_turn()
+		await _enemy_turn()
 		if player_health <= 0:
 			_set_turn_phase(TurnPhase.GAME_OVER)
 			game_over.emit(false) 

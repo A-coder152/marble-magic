@@ -92,10 +92,10 @@ text = "Leave Shop"
 [node name="coins" type="Label" parent="."]
 layout_mode = 0
 offset_left = 128.0
-offset_top = 34.0
-offset_right = 242.0
-offset_bottom = 84.0
-theme_override_font_sizes/font_size = 36
+offset_top = 52.0
+offset_right = 246.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 40
 text = "Coins: "
 
 [node name="BagBtn" type="TextureButton" parent="."]

@@ -17,7 +17,9 @@ func _ready():
 func set_marble_data(index: int, res: Marble = null):
 	marble_index = index
 	marble_res = res
-	if marble_res: marble_value = marble_res.damage
+	if marble_res: 
+		marble_value = marble_res.damage
+		if res.title == "Vantablack Marble": reveal_value(true)
 
 func set_selected(is_selected: bool):
 	if is_selected:

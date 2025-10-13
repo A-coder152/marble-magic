@@ -13,6 +13,13 @@ extends Control
 
 var marble_instances: Array = [] 
 
+var enemy_textures = [
+	preload("res://images/enemy1.png"),
+	preload("res://images/enemy2.png"),
+	preload("res://images/enemy3.png")
+]
+var enemy_on = 2
+
 func _ready():
 	_setup_marbles()
 	_connect_signals()
@@ -37,6 +44,8 @@ func _connect_signals():
 	confirm_button.pressed.connect(GameManager.confirm_selection)
 	GameManager.close_bag.connect(close_bag)
 	GameManager.close_shop.connect(close_shop)
+	GameManager.change_coins.connect(change_coins)
+	GameManager.change_stunned.connect(change_stunned)
 
 
 func _on_health_changed(entity_type: String, current_hp: int, max_hp: int):
@@ -50,7 +59,7 @@ func _on_health_changed(entity_type: String, current_hp: int, max_hp: int):
 func _on_turn_phase_changed(new_phase: int):
 	_update_ui_for_phase(new_phase)
 
-func _on_marble_selected(index: int):
+func _on_marble_selected(_index: int):
 	for i in range(marble_instances.size()):
 		var marble = marble_instances[i]
 		var is_selected = GameManager.selected_marble_indices.has(i)
@@ -63,7 +72,6 @@ func _on_game_over(win: bool):
 	confirm_button.disabled = true
 	$BGAlpha.visible = true
 	if win:
-		GameManager.coins += 5
 		message_label.text = "GAME OVER! YOU WIN!"
 		$RoundWonPopup.visible = true
 	else:
@@ -98,7 +106,11 @@ func _update_ui_for_phase(phase: int):
 			confirm_button.disabled = true
 			_update_marble_values_and_visibility(true)
 			_reset_marble_selection_visuals()
-			message_label.text = "Turn ended. Enemy attacking..." if enemy_health_bar.value > 0 else "Enemy defeated! Starting next round..."
+			message_label.text = "Turn ended. Enemy attacking..." 
+			if enemy_health_bar.value <= 0: 
+				message_label.text = "Enemy defeated! Starting next round..."
+				GameManager.coins += 5
+				change_coins()
 
 
 func _update_marble_values_and_visibility(reveal_all: bool):
@@ -113,11 +125,13 @@ func _reset_marble_selection_visuals():
 		marble.set_selected(false)
 
 func _on_round_won_pressed() -> void:
+	$Enemy.texture = enemy_textures[enemy_on]
 	GameManager.start_new_game()
 	bgalpha.visible = false
 	$RoundWonPopup.visible = false
 
 func _on_round_lost_game_pressed() -> void:
+	enemy_on = (enemy_on + 1) % 3
 	GameManager.start_new_game()
 	bgalpha.visible = false
 	$RoundLostPopup.visible = false
@@ -126,7 +140,9 @@ func _on_reset_game_pressed() -> void:
 	GameManager.enemy_max_health = 5
 	GameManager.enemy_max_dmg = 2
 	GameManager.coins = 0
-	GameManager.bag_marbles = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5]
+	GameManager.bag_marbles = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5]
+	$Enemy.texture = preload("res://images/enemy2.png")
+	enemy_on = 2
 	_on_round_lost_game_pressed()
 
 func _on_bag_btn_pressed() -> void:
@@ -145,3 +161,10 @@ func _on_shop_pressed() -> void:
 func close_shop():
 	Shop.visible = false
 	bgalpha.visible = true
+	change_coins()
+
+func change_coins():
+	$coins.text = str(GameManager.coins)
+
+func change_stunned():
+	$Stunned.visible = true if !$Stunned.visible else false
