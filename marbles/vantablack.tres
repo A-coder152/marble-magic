@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_tcj4k")
 title = "Vantablack Marble"
-cost = 3
+cost = 2
 description = "So black it's recognizable when hidden. Do not handle, deals 5 damage to self."
 texture = ExtResource("2_tcj4k")
 damage = 0

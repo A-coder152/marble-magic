@@ -2,8 +2,8 @@ extends Node
 
 var coins = 0
 
-var player_health: int = 20
-var enemy_health: int = 20
+var player_health: int = 25
+var enemy_health: int = 5
 var player_max_health: int = 25
 
 var enemy_max_health: int = 5
@@ -58,6 +58,8 @@ signal game_over(win: bool)
 signal close_bag()
 signal close_shop()
 signal refresh_shop()
+signal change_stunned()
+signal change_coins()
 
 func _ready():
 	print("GameManager ready and loaded!")
@@ -73,9 +75,9 @@ func start_next_turn():
 	
 
 func start_new_game():
-	enemy_max_health += 5
+	enemy_max_health += 3
 	enemy_max_dmg += 1
-	player_health = player_max_health
+	#player_health = player_max_health
 	enemy_health = enemy_max_health 
 	start_next_turn()
 
@@ -114,17 +116,19 @@ func confirm_selection():
 	if current_turn_phase == TurnPhase.TAKE_1_SELECTION:
 		potential_damage = total_chosen_damage
 		print("Take 1 Potential Damage: ", potential_damage)
-		health_changed.emit("enemy", max(enemy_health - potential_damage, 0), enemy_max_health)
+		var farter = calculate_effects(chosen_values)
+		health_changed.emit("enemy", farter[1], enemy_max_health)
+		health_changed.emit("player", farter[0], farter[3])
 		_set_turn_phase(TurnPhase.TAKE_1_REVEAL)
 		get_tree().create_timer(1.5).timeout.connect(func():
 			_set_turn_phase(TurnPhase.TAKE_2_SELECTION)
 			selected_marble_indices.clear()
 			health_changed.emit("enemy", max(enemy_health, 0), enemy_max_health)
+			health_changed.emit("player", max(player_health, 0), player_max_health)
 		)
 	elif current_turn_phase == TurnPhase.TAKE_2_SELECTION:
 		print("Take 2 Actual Damage: ", total_chosen_damage)
 		apply_effects(chosen_values)
-		_apply_damage_to_enemy(total_chosen_damage)
 		_set_turn_phase(TurnPhase.TURN_END)
 		await get_tree().create_timer(1.75 if enemy_health > 0 else 2.25).timeout
 		_end_turn()
@@ -136,9 +140,15 @@ func _apply_damage_to_enemy(amount: int):
 	damage_dealt.emit(amount, "enemy")
 
 func apply_effects(marbles: Array[Marble]):
-	#player_health = min(player_max_health, player_health + marble.heal)
-	#health_changed.emit("player", player_health, player_max_health)
-	pass
+	var augh = calculate_effects(marbles)
+	player_health = augh[0]
+	_apply_damage_to_enemy(enemy_health - augh[1])
+	coins = augh[2]
+	player_max_health = augh[3]
+	enemy_stunned = augh[4]
+	health_changed.emit("player", player_health, player_max_health)
+	change_coins.emit()
+	if enemy_stunned: change_stunned.emit()
 
 func calculate_effects(marbles: Array[Marble]):
 	var sim_enemy_health = enemy_health
@@ -147,8 +157,8 @@ func calculate_effects(marbles: Array[Marble]):
 	var sim_stunned = false
 	var sim_player_max_hp = player_max_health
 	for marble in marbles:
-		sim_enemy_health = max(0, min(enemy_max_health, enemy_health - marble.damage))
-		sim_player_health = max(0, min(player_max_health, player_health + marble.heal))
+		sim_enemy_health = max(0, min(enemy_max_health, sim_enemy_health - marble.damage))
+		sim_player_health = max(0, min(player_max_health, sim_player_health + marble.heal))
 		for effect in marble.effects:
 			match effect:
 				marble.EFFECTS.COIN:
@@ -161,8 +171,13 @@ func calculate_effects(marbles: Array[Marble]):
 					sim_enemy_health *= 1 - (1. / marble.effects_impact[marble.effects.find(effect)])
 				marble.EFFECTS.MEGAHEAL:
 					sim_player_health += (1. / marble.effects_impact[marble.effects.find(effect)]) * (player_max_health - player_health)
+	return [sim_player_health, sim_enemy_health, sim_coins, sim_player_max_hp, sim_stunned]
 
 func _enemy_turn():
+	if enemy_stunned: 
+		enemy_stunned = false
+		change_stunned.emit()
+		return
 	var enemy_damage = randi_range(1, enemy_max_dmg) # Random damage for enemy
 	player_health = max(0, player_health - enemy_damage)
 	print("Player health after enemy attack: ", player_health)

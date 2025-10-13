@@ -126,6 +126,7 @@ func _on_reset_game_pressed() -> void:
 	GameManager.enemy_max_health = 5
 	GameManager.enemy_max_dmg = 2
 	GameManager.coins = 0
+	GameManager.bag_marbles = [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5]
 	_on_round_lost_game_pressed()
 
 func _on_bag_btn_pressed() -> void:
@@ -143,3 +144,4 @@ func _on_shop_pressed() -> void:
 
 func close_shop():
 	Shop.visible = false
+	bgalpha.visible = true

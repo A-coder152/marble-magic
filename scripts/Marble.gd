@@ -6,7 +6,7 @@ extends Control
 
 var marble_index: int = -1
 var marble_value: int = 0
-var marble_res
+var marble_res: Marble
 
 signal marble_clicked(index: int)
 
@@ -32,7 +32,11 @@ func set_selected(is_selected: bool):
 func reveal_value(reveal: bool):
 	if reveal:
 		value_label.text = str(marble_value)
+		marble_button.visible = false
+		$TextureRect.texture = marble_res.texture
 	else:
+		$TextureRect.texture = null
+		marble_button.visible = true
 		value_label.text = "?"
 		marble_button.add_theme_stylebox_override("normal", _get_normal_style())
 
